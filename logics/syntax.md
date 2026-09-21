@@ -12,9 +12,15 @@
 >
 > - ### [4. 독해의 유일성](#4-독해의-유일성-1)
 >
-> - ### [5. 자유변항과 종속변항](#5-자유변항과-종속변항-1)
+> - ### [5. 부분식](#5-부분식-1)
 >
-> - ### [6. 치환](#6-치환-1)
+> - ### [6. 자유변항과 종속변항](#6-자유변항과-종속변항-1)
+>
+> - ### [7. 치환](#7-치환-1)
+>
+> - ### [8. 마무리](#8-마무리-1)
+
+사실 조금 더 많은 내용이 있긴 하나 그렇게까지 중요하지 않다고 생각해서 생략했다. 그리고 이것만 해도 굉장히 외워야 할 게 많기 때문이다. 이번 글에는 정리라고 할만한게 하나뿐이 없고 전부 정의로만 이루어져있다. 중요한 것들만 외워두고 나머지는 필요할 때 찾아보면서 메꾸도록 하자.
 
 ## 1. 1차 논리 언어
 
@@ -205,9 +211,152 @@
 >
 > 문자열의 진접두사는 그것의 앞부분이되 빈 문자열도 그 문자열 자체도 아닌 것이다.
 
+> ### **Lemma.** 논리식의 진접두사는 논리식이 아니다.
+>
+> **pf.** 귀납법과 위의 렘마를 이용한다. $_\blacksquare$
 
-## 5. 자유변항과 종속변항
+> ### 독해의 유일성 (Unique readability)
+>
+> 모든 식 $\varphi$는 반드시 아래의 경우 중에 정확히 하나에만 해당한다.
+>
+> 1. $\varphi$는 원자식이다.
+>
+> 2. $\varphi$는 $\neg\psi$ 꼴이다.
+>
+> 3. $\varphi$는 $(\psi \wedge \chi)$ 꼴이다.
+>
+> 4. $\varphi$는 $(\psi \vee \chi)$ 꼴이다.
+>
+> 5. $\varphi$는 $(\psi \rightarrow \chi)$ 꼴이다.
+>
+> 6. $\varphi$는 $\forall x\psi$ 꼴이다.
+>
+> 7. $\varphi$는 $\exists x\psi$ 꼴이다.
+>
+> 나아가 그 경우 내에서 그러한 표현은 유일하다. 즉 $*$가 어떤 논리적 연결사일 때 $\varphi$가 $(\psi * \chi)$로 표현되고 $(\psi' * \chi')$로도 표현이 된다면 $\psi\equiv\psi'$이고 $\chi\equiv\chi'$이다.
 
 
+**pf.** 논리식 $\varphi$에 대해 $\varphi$는 반드시 양화사, 왼쪽 괄호, 술어 기호, $\neg$로 시작한다. 왼쪽 괄호로 시작하지 않는 경우에는 자명하다. 따라서 왼쪽 괄호로 시작하는 경우만 보면 된다.
 
-## 6. 치환
+우선 그런 경우 어떤 두 논리식과 적절한 연결사 $*$이 있어 $\varphi\equiv(\psi * \chi)$라는 것은 논리식의 정의상 알 수 있다. 따라서 유일성만을 보이면 된다.
+
+$\varphi\equiv(\psi * \chi), \varphi\equiv(\psi' *' \chi')$라고 하자. 여기서 $*, *'$은 임의의 논리적 연결사이다. 만약 $\psi \not\equiv \psi'$이면 $\psi$가 $\psi'$의 진접두사 이거나 $\psi'$가 $\psi$의 진접두사여야 하나 보조정리에 의해 논리식의 진접두사는 논리식이 아니므로 모순이다.
+
+따라서 $\psi\equiv\psi'$이다. 그러면 $*\equiv*'$이고 $\chi\equiv\chi'$까지 성립하게 된다.$_\blacksquare$
+
+따라서 우리는 주연산자라는 개념을 정의할 수 있게 된다. 말그대로 $\neg\psi$꼴의 논리식의 주연산자는 $\neg$이고 $(\psi\wedge\chi)$꼴의 논리식의 주연산자는 $\wedge$, $\forall x \psi$꼴의 논리식의 주연산자는 $\forall$인 것이다. 별거 없다.
+
+## 5. 부분식
+
+부분식(subformula)는 논리식의 부분 문자열 중에 논리식인 것을 의미한다. 역시 귀납적으로 정의된다.
+
+> ### 직전 부분식(immediate subformula)
+>
+> 1. $\varphi$가 원자식이면 직전 부분식은 없다.
+>
+> 2. $\varphi\equiv\neg\psi$이면 $\varphi$의 직전 부분식은 $\psi$이다.
+> 
+> 3. $\varphi\equiv(\psi\wedge\chi)$이면 $\varphi$의 직전 부분식은 $\psi$와 $\chi$이다.
+>
+> 4. $\varphi\equiv(\psi\vee\chi)$이면 $\varphi$의 직전 부분식은 $\psi$와 $\chi$이다.
+>
+> 5. $\varphi\equiv(\psi\rightarrow\chi)$이면 $\varphi$의 직전 부분식은 $\psi$와 $\chi$이다.
+>
+> 6. $\varphi\equiv\forall x\psi$이면 $\varphi$의 직전 부분식은 $\psi$이다.
+>
+> 7. $\varphi\equiv\exists x\psi$이면 $\varphi$의 직전 부분식은 $\psi$이다.
+
+> ### 진 부분식 (proper subformula)
+>
+> 논리식 $\varphi$의 진 부분식은 그것이 원자식이라면 존재하지 않으며 그렇지 않다면 그 직전 부분식들과 직전 부분식들의 진 부분식들 전부로 귀납적으로 정의된다.
+
+> ### 부분식 (subformula)
+>
+> 논리식의 부분식은 그 자체와 그것의 진 부분식들 전부로 정의된다.
+
+## 6. 자유변항과 종속변항
+
+구문론에서 굉장히 중요한 내용인 자유 변항과 종속 변항을 정의하자. 자유변항은 양화사에 구속되지 않은 변항이고 종속변항은 양화사에 구속된 변항을 의미한다. 다만 말은 변항이지만 사실은 변항 '출현' (variable occurance) 이라고 보는 것이 맞다. 아래와 같은 논리식에서도 잘 정의되어야 하기 때문이다.
+
+> $(P(x)\vee\forall x Q(x))$
+
+다음과 같은 논리식에서 $\forall x$의 $x$는 $Q(x)$의 $x$를 가리키는 것은 맞지만 $P(x)$의 $x$를 가리키는 것은 아니다. 따라서 문자열에서 나타나는 각각의 변항에 대해 그것이 자유변항인지 종속변항인지 부여해야한다. 그래서 자유 변항이 아니라 자유 변항 출현, 종속 변항이 아니라 종속 변항 출현이 더 맞는 표현이라 하는 것이다.
+
+이제 자유변항과 종속변항을 제대로 정의하도록 하자. 이 역시 귀납적으로 정의된다.
+
+> ### 자유변항과 종속변항 (free variable occurance and bound variable accurance)
+>
+> 1. $\varphi$가 원자식이면 모든 변항 출현이 자유 변항 출현이다.
+>
+> 2. $\varphi\equiv\neg\psi$이면 $\varphi$의 자유 변항 출현은 $\psi$의 자유 변항 출현과 같다. 
+> 
+> 3. $\varphi\equiv(\psi\wedge\chi)$이면 $\varphi$의 자유 변항 출현은 $\psi$의 자유 변항 츌현과 $\chi$의 자유 변항 출현 모두이다.
+>
+> 4. $\varphi\equiv(\psi\vee\chi)$이면 $\varphi$의 자유 변항 출현은 $\psi$의 자유 변항 츌현과 $\chi$의 자유 변항 출현 모두이다.
+>
+> 5. $\varphi\equiv(\psi\rightarrow\chi)$이면 $\varphi$의 자유 변항 출현은 $\psi$의 자유 변항 츌현과 $\chi$의 자유 변항 출현 모두이다.
+>
+> 6. $\varphi\equiv\forall x\psi$이면 $\varphi$의 자유 변항 출현은 $\psi$의 자유 변항 출현 중에 $x$가 아닌 것과 같다.
+>
+> 7. $\varphi\equiv\exists x\psi$이면 $\varphi$의 자유 변항 출현은 $\psi$의 자유 변항 출현 중에 $x$가 아닌 것과 같다.
+>
+> 자유 변항 발생이 아닌 모든 변항 발생은 종속 변항 발생이다.
+
+> ### 양화사의 범위(scope)
+>
+> $\forall x\psi$가 $\varphi$의 부분식일 때, 해당하는 $\forall x$의 범위를 $\psi$라 한다. 
+$\exists$의 경우도 동일하다.
+
+> ### 문장(sentence)
+>
+> 문장은 자유 변항이 출현하지 않는 논리식이다.
+
+
+## 7. 치환
+
+> ### 항의 치환
+>
+> 항 $s$에 대해 $s[t/x]$는 $s$에 출현하는 모든 변항 $x$를 항 $t$로 치환한 식이며 아래와 같이 귀납적으로 정의된다.
+>
+> 1. $s\equiv c$ : $s[t/x]$는 $s$이다.
+>
+> 2. $s\equiv y$ : $s[t/x]$는 $y\not\equiv x$이므로 $t$이다.
+>
+> 3. $s\equiv x$ : $s[t/x]$는 $t$이다.
+>
+> 4. $s\equiv f(t_1,...,t_n)$ : $s[t/x]$는 $f(t_1[t/x],t_2[t/x],...,t_n[t/x])$이다.
+
+
+> ### 논리식의 치환
+>
+> 논리식 $\varphi$에 대해 $\varphi[t/x]$는 $\varphi$에 출현하는 모든 변항 $x$를 항 $t$로 치환한 논리식이며 아래와 같이 귀납적으로 정의된다.
+>
+> 1. $\varphi\equiv\bot$ : $\varphi[t/x]$는 $\bot$이다.
+>
+> 2. $\varphi\equiv P(t_1,...,t_n)$ : $\varphi[t/x]$는 $P(t_1[t/x],t_2[t/x],...,t_n[t/x])$이다.
+>
+> 3. $\varphi\equiv\neg\psi$ : $\varphi[t/x]$는 $\neg\psi[t/x]$이다.
+>
+> 4. $\varphi\equiv(\psi\wedge\chi)$ : $\varphi[t/x]$는 $(\psi[t/x]\wedge\chi[t/x])$이다.
+>
+> 5. $\varphi\equiv(\psi\vee\chi)$ : $\varphi[t/x]$는 $(\psi[t/x]\vee\chi[t/x])$이다.
+>
+> 6. $\varphi\equiv(\psi\rightarrow\chi)$ : $\varphi[t/x]$는 $(\psi[t/x]\rightarrow\chi[t/x])$이다.
+>
+> 7. $\varphi\equiv\forall y\psi$ : $\varphi[t/x]$는 $\forall y\psi[t/x]$이다. ($y\not\equiv x$)
+>
+> 8. $\varphi\equiv\exists y\psi$ : $\varphi[t/x]$는 $\exists y\psi[t/x]$이다. ($y\not\equiv x$)
+>
+> 9. $\varphi\equiv\forall x\psi$ : $\varphi[t/x]$는 $\varphi$이다.
+>
+> 10. $\varphi\equiv\exists x\psi$ : $\varphi[t/x]$는 $\varphi$이다.
+
+치환의 정의에서 주의할 점은 종속변항은 치환하면 안 된다는 것이다. 아래의 예시를 보면 의미상 그렇게 되면 안됨을 이해할 수 있을 것이다.
+
+- $\varphi\equiv(P(x)\vee\exists xQ(x))$에서 $\varphi[t/x]$는 $(P(t)\vee\exists xQ(x))$여야 자연스럽지 $(P(x)\vee\exists xQ(t))$가 되면 굉장히 이상하다.
+
+## 8. 마무리
+
+귀납적 정의고 뭐고 너무 길고 복잡해서 막막할 것이다. 다만 눈치 챘을 수도 있는데 이번 글에서 귀납적으로 정의한 대상들은 굳이 그렇게 하지 않아도 직관적으로 받아들이고 쓸 수 있다는 점이다. 누군가 어떤 문자열을 보여주고 그것이 논리식인지 묻는다면 굳이 귀납적 정의를 하나하나 따라가지 않아도 판단할 수 있을 것이다. 즉 귀납적 정의는 그냥 직관적인 대상들을 수학적인 대상화시키고 증명과 논증의 영역으로 끌고오기 위한 방법에 불과하지 이걸 다 외울 필요는 없다. 사실 계속 사용하다 보면 어느 순간 거의 외워져 있다.
+
+또한 현재 이 글은 아직 수정 중에 있으며 부족한 부분이 많다. 예시나 연습문제는 천천히 추후 추가하도록 하겠다.
