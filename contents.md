@@ -50,6 +50,10 @@
   - 콤팩트성 정리 (compactness theorem)
   - 뢰벤하임-스콜렘 정리 (Löwenheim-Skolem theorem)
 
+- 불완전성 정리
+
+   20세기 수리논리학의 정수. 괴델의 걸작. 
+
 ## 집합론
 
 - ZFC 공리계
